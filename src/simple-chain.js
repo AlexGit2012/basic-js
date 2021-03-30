@@ -2,7 +2,7 @@ const CustomError = require("../extensions/custom-error");
 
 const chainMaker = {
     linkArr: [],
-    result: "",
+    tempArr: [],
     getLength() {
         return this.linkArr.length
     },
@@ -17,6 +17,7 @@ const chainMaker = {
             return this
         }
         if (position - 1 < 0) {
+            this.linkArr = []
             throw new Error("Error")
             return this
         }
@@ -28,9 +29,9 @@ const chainMaker = {
         return this
     },
     finishChain() {
-        this.result = this.linkArr.map(el => `( ${el} )`).join("~~")
+        this.tempArr.push(this.linkArr.map(el => `( ${el} )`).join("~~"))
         this.linkArr = []
-        return this.result
+        return this.tempArr.pop();
     }
 };
 
