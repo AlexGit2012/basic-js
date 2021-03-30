@@ -2,8 +2,8 @@ const CustomError = require("../extensions/custom-error");
 
 module.exports = function repeater(str, options) {
 
-    let tempStr = (str === null) ? "null" : str.toString();
-    let tempAddition = (options.addition === null) ? "null" : (options.addition===false ? "false" : (options.addition ? options.addition.toString() : ""));
+    let tempStr = (str === null) ? "null" : str+"";
+    let tempAddition = (options.addition === null) ? "null" : (options.addition===false ? "false" : (options.addition ? options.addition+"" : ""));
     let tempSeparator = options.separator ? options.separator.toString() : "+";
     let tempAdditionSeparator = options.additionSeparator ? options.additionSeparator.toString() : "|";
     let tempRepeatTimes = options.repeatTimes ? (options.repeatTimes.isNaN ? 0 : options.repeatTimes) : 1;
